@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon Marcus V. Reyes | UI/UX Portfolio</title>
+    <title>Simon Marcus Venasquez Reyes | UI/UX Portfolio</title>
     <meta name="description" content="Scrapbook-inspired UI/UX portfolio of Simon Marcus V. Reyes with design case studies, brand partnerships, and photography.">
+    <link rel="icon" type="image/png" href="SIMON.png?v=20260324">
+    <link rel="apple-touch-icon" href="SIMON.png?v=20260324">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,7 +18,12 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="brand">Hi, I'm Simon</a>
+            <a href="#home" class="brand">
+                <span class="brand-label">Hi, I'm Simon</span>
+                <video class="brand-mini-video" muted loop playsinline preload="metadata" aria-hidden="true">
+                    <source src="profile-video-web.mp4?v=20260324-2301" type="video/mp4">
+                </video>
+            </a>
             <ul class="nav-menu">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#designs" class="nav-link">Designs</a></li>
@@ -36,19 +43,24 @@
         <div class="container hero-layout">
             <div class="hero-copy">
                 <p class="sticker">Open for UI/UX roles</p>
-                <h1>Scrapbook Stories, <span>Thoughtful UX</span></h1>
+                <h1>Dynamic Designs<br><span>Thoughtful UX</span></h1>
                 <p>
-                    I am Simon Marcus V. Reyes, a UI/UX aspirant crafting playful digital experiences with clear structure,
-                    bold color, and human-centered decisions.
+                    I am Simon Marcus Venasquez Reyes, a UI/UX designer crafting creative digital experiences with clear structure,
+                    reusable components, and human-centered decisions.
                 </p>
                 <div class="hero-actions">
                     <a href="#designs" class="btn btn-primary">View My Designs</a>
-                    <a href="#contact" class="btn btn-outline">Hire Me</a>
+                    <a href="#contact" class="btn btn-outline">Curriculum Vitae</a>
                 </div>
             </div>
             <div class="hero-photo scrapbook-card tilt">
-                <img src="profile-photo.jpg?v=20260322" alt="Portrait of Simon Marcus V. Reyes">
-                <p class="photo-note">UI/UX designer from Pampanga</p>
+                <video id="profileVideo" class="profile-video" autoplay loop muted playsinline webkit-playsinline preload="auto" aria-label="Profile video of Simon Marcus V. Reyes">
+                    <source src="profile-video-web.mp4?v=20260324-2301" type="video/mp4">
+                    <source src="profile-video.mp4?v=20260324" type="video/mp4">
+                    <source src="79E0E9B6-2D44-4841-9E97-170D9C8A2B06.MOV?v=20260324" type="video/quicktime">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="photo-note">yellow! i'm glad you're here, feel free to browse around.</p>
             </div>
         </div>
     </header>
@@ -57,12 +69,14 @@
         <div class="container grid-two">
             <article class="scrapbook-card pinned">
                 <h2>About Me</h2>
+                <br>
                 <p>
-                    I blend research, visual hierarchy, and storytelling to design interfaces that feel both simple and memorable.
-                    My style leans minimalist, but I enjoy adding fun details inspired by lomography and scrapbook culture.
+                    I love designing with a vibrant energy,but my true strength is adaptability. 
+                    I can seamlessly pivot from an expressive, high-energy interface to pure minimalism, 
+                    ensuring the final product perfectly aligns with the client's goals.    
                 </p>
                 <p>
-                    I am currently building real-world case studies to apply for UI/UX internships and junior product design roles.
+                    I am currently building real-world projects to prepare for for junior product design roles.
                 </p>
             </article>
             <article class="scrapbook-card">
@@ -71,9 +85,12 @@
                     <li>User Flows</li>
                     <li>Wireframing</li>
                     <li>Figma Prototyping</li>
-                    <li>Visual Systems</li>
-                    <li>Design Presentations</li>
-                    <li>Social Media Design</li>
+                    <li>Design Principles</li>
+                    <li>Auto Layout</li>
+                    <li>User Research & Testing</li>
+                    <li>Design Systems</li>
+                    <li>Responsive Design</li>
+                    <li>Front-End Collaboration</li>
                 </ul>
             </article>
         </div>
@@ -83,7 +100,7 @@
         <div class="container">
             <div class="section-heading">
                 <h2>Design Showcase</h2>
-                <p>Selected UI/UX projects with a direct Figma view for recruiters and hiring teams.</p>
+                <p>Selected UI/UX projects with a direct Figma view for your review.</p>
             </div>
 
             <div class="card-grid">
@@ -208,6 +225,10 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <script src="script.js?v=20260324"></script>
 </body>
 </html>

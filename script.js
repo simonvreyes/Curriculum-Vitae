@@ -2,10 +2,30 @@ const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 const brandLink = document.querySelector('.brand');
+const brandMiniVideo = document.querySelector('.brand-mini-video');
+const heroProfileMedia = document.querySelector('.hero-photo');
+const profileVideo = document.querySelector('#profileVideo');
+const backToTopButton = document.querySelector('.back-to-top');
+const backToTopThreshold = 180;
 
-const brandTopText = "Hi, I'm Simon";
-const brandScrolledText = 'Back to top';
-const scrollTextThreshold = 140;
+function ensureProfileVideoAutoplay() {
+    if (!profileVideo) {
+        return;
+    }
+
+    // These properties increase autoplay reliability across browsers.
+    profileVideo.muted = true;
+    profileVideo.defaultMuted = true;
+    profileVideo.playsInline = true;
+    profileVideo.autoplay = true;
+
+    const playPromise = profileVideo.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {
+            // Ignore autoplay rejections silently to avoid console noise in strict browsers.
+        });
+    }
+}
 
 if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
@@ -65,19 +85,78 @@ function setActiveLink() {
     });
 }
 
-function updateBrandTextOnScroll() {
-    if (!brandLink) {
+function updateBackToTopButton() {
+    if (!backToTopButton) {
         return;
     }
 
-    if (window.scrollY > scrollTextThreshold) {
-        brandLink.textContent = brandScrolledText;
+    const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+
+    if (scrollY > backToTopThreshold) {
+        backToTopButton.classList.add('visible');
     } else {
-        brandLink.textContent = brandTopText;
+        backToTopButton.classList.remove('visible');
     }
 }
 
+function updateBrandMiniVideoVisibility() {
+    if (!brandLink || !brandMiniVideo || !heroProfileMedia) {
+        return;
+    }
+
+    const heroRect = heroProfileMedia.getBoundingClientRect();
+    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+    const hasPassedProfile = heroRect.bottom <= navbarHeight;
+    const isShowing = brandLink.classList.contains('show-mini-video');
+
+    if (hasPassedProfile === isShowing) {
+        return;
+    }
+
+    brandLink.classList.toggle('show-mini-video', hasPassedProfile);
+
+    if (hasPassedProfile) {
+        const playPromise = brandMiniVideo.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {
+                // Ignore autoplay rejection for stricter browsers.
+            });
+        }
+    } else {
+        brandMiniVideo.pause();
+    }
+}
+
+if (backToTopButton) {
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
 window.addEventListener('scroll', setActiveLink);
-window.addEventListener('scroll', updateBrandTextOnScroll);
+window.addEventListener('scroll', updateBackToTopButton);
+window.addEventListener('scroll', updateBrandMiniVideoVisibility);
 window.addEventListener('load', setActiveLink);
-window.addEventListener('load', updateBrandTextOnScroll);
+window.addEventListener('load', updateBackToTopButton);
+window.addEventListener('load', updateBrandMiniVideoVisibility);
+window.addEventListener('resize', updateBrandMiniVideoVisibility);
+
+window.addEventListener('DOMContentLoaded', ensureProfileVideoAutoplay);
+window.addEventListener('load', ensureProfileVideoAutoplay);
+
+if (profileVideo) {
+    profileVideo.addEventListener('loadeddata', ensureProfileVideoAutoplay);
+}
+
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+        ensureProfileVideoAutoplay();
+    }
+});
+
+updateBackToTopButton();
+ensureProfileVideoAutoplay();
+updateBrandMiniVideoVisibility();
