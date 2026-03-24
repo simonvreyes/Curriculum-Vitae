@@ -3,146 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon Marcus V. Reyes - CV & Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Simon Marcus V. Reyes | UI/UX Portfolio</title>
+    <meta name="description" content="Scrapbook-inspired UI/UX portfolio of Simon Marcus V. Reyes with design case studies, brand partnerships, and photography.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <div class="grain"></div>
+
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <h2>Simon Marcus V. Reyes</h2>
-            </div>
+            <a href="#home" class="brand">Hi, I'm Simon</a>
             <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#cv" class="nav-link">CV</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#designs" class="nav-link">Designs</a></li>
+                <li><a href="#partnerships" class="nav-link">Partners</a></li>
+                <li><a href="#photography" class="nav-link">Photography</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Hi, I'm Simon Marcus V. Reyes</h1>
-                <p class="hero-subtitle">BS Computer Science Student</p>
-                <p class="hero-description">
-                    A passionate 4th Year Computer Science student at Pampanga State University with expertise in programming, 
-                    front-end design, and leadership.
+    <header id="home" class="hero section reveal">
+        <div class="container hero-layout">
+            <div class="hero-copy">
+                <p class="sticker">Open for UI/UX roles</p>
+                <h1>Scrapbook Stories, <span>Thoughtful UX</span></h1>
+                <p>
+                    I am Simon Marcus V. Reyes, a UI/UX aspirant crafting playful digital experiences with clear structure,
+                    bold color, and human-centered decisions.
                 </p>
-                <div class="hero-buttons">
-                    <a href="#cv" class="btn btn-primary">View CV</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <div class="hero-actions">
+                    <a href="#designs" class="btn btn-primary">View My Designs</a>
+                    <a href="#contact" class="btn btn-outline">Hire Me</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="profile-photo">
-                    <img src="profile-photo.jpg" alt="Simon Marcus V. Reyes" />
-                </div>
+            <div class="hero-photo scrapbook-card tilt">
+                <img src="profile-photo.jpg?v=20260322" alt="Portrait of Simon Marcus V. Reyes">
+                <p class="photo-note">UI/UX designer from Pampanga</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="section reveal">
+        <div class="container grid-two">
+            <article class="scrapbook-card pinned">
+                <h2>About Me</h2>
+                <p>
+                    I blend research, visual hierarchy, and storytelling to design interfaces that feel both simple and memorable.
+                    My style leans minimalist, but I enjoy adding fun details inspired by lomography and scrapbook culture.
+                </p>
+                <p>
+                    I am currently building real-world case studies to apply for UI/UX internships and junior product design roles.
+                </p>
+            </article>
+            <article class="scrapbook-card">
+                <h3>Quick Highlights</h3>
+                <ul class="tag-list">
+                    <li>User Flows</li>
+                    <li>Wireframing</li>
+                    <li>Figma Prototyping</li>
+                    <li>Visual Systems</li>
+                    <li>Design Presentations</li>
+                    <li>Social Media Design</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section id="designs" class="section reveal">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Design Showcase</h2>
+                <p>Selected UI/UX projects with a direct Figma view for recruiters and hiring teams.</p>
+            </div>
+
+            <div class="card-grid">
+                <article class="scrapbook-card project-card">
+                    <img src="design-1.jpg" alt="Mobile app UI case study">
+                    <h3>Campus Companion App</h3>
+                    <p>Designed a student-first mobile flow that simplifies schedule tracking, reminders, and announcements.</p>
+                    <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer" class="btn btn-small">See in Figma</a>
+                </article>
+
+                <article class="scrapbook-card project-card">
+                    <img src="design-2.jpg" alt="Website redesign case study">
+                    <h3>Scholarship Portal Redesign</h3>
+                    <p>Reworked IA and onboarding steps to reduce confusion and improve first-time completion rates.</p>
+                    <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer" class="btn btn-small">See in Figma</a>
+                </article>
+
+                <article class="scrapbook-card project-card">
+                    <img src="design-3.jpg" alt="Dashboard UI case study">
+                    <h3>Organization Dashboard</h3>
+                    <p>Created a colorful yet readable dashboard for student leaders to track events and tasks quickly.</p>
+                    <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer" class="btn btn-small">See in Figma</a>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- CV Section -->
-    <section id="cv" class="cv">
+    <section id="design-process" class="section reveal">
         <div class="container">
-            <h2 class="section-title">Curriculum Vitae</h2>
-            <div class="cv-image-container">
-                <img src="cv-image.jpg" alt="Simon Marcus V. Reyes CV" class="cv-image" />
+            <div class="section-heading">
+                <h2>How I Explain My Design</h2>
+                <p>A short breakdown of the thinking behind my outputs.</p>
+            </div>
+            <div class="process-strip">
+                <article class="process-step scrapbook-card">
+                    <h3>1. Discover</h3>
+                    <p>I map user problems, gather references, and define what success looks like for the project.</p>
+                </article>
+                <article class="process-step scrapbook-card">
+                    <h3>2. Design</h3>
+                    <p>I build wireframes, set type and color direction, then iterate quickly with feedback in Figma.</p>
+                </article>
+                <article class="process-step scrapbook-card">
+                    <h3>3. Deliver</h3>
+                    <p>I package flows, components, and rationale clearly so teams can implement confidently.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <section id="partnerships" class="section reveal">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I am an ambitious Computer Science student at Pampanga State University with a passion for 
-                        programming, design, and leadership. Being involved in various academic organizations has thought
-                        me a lot of soft skills, lessons in life, and realities in our society.
-                    </p>
-                    <p>
-                        My academic journey has been marked by consistent excellence, achieving President's Lister 
-                        status each sem and serving in leadership roles. I have expertise in multiple programming languages, 
-                        design tools, and video editing software, combined with skills in leadership, 
-                        problem-solving, and teamwork.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>Chairperson on Energy Conservation</h3>
-                            <p>Association of DOST Scholars</p>
-                        </div>
-                        <div class="stat">
-                            <h3>BSCS Degree Representative</h3>
-                            <p>College of Computing Studies Student Council</p>
-                        </div>
-                        <div class="stat">
-                            <h3>Service Awardee</h3>
-                            <p>Don Honorio Ventura State University</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-heading">
+                <h2>Brand Partnerships</h2>
+                <p>Creative work made for partner organizations and communities.</p>
+            </div>
+
+            <div class="card-grid partnerships-grid">
+                <article class="scrapbook-card partner-card">
+                    <h3>Association of DOST Scholars</h3>
+                    <p>Designed campaign visuals and event materials with a youthful, informative style.</p>
+                    <span class="label">Social Campaign Kit</span>
+                </article>
+                <article class="scrapbook-card partner-card">
+                    <h3>College Student Council</h3>
+                    <p>Produced promotion cards and content layouts for student initiatives and announcements.</p>
+                    <span class="label">Event Design Assets</span>
+                </article>
+                <article class="scrapbook-card partner-card">
+                    <h3>Campus Organizations</h3>
+                    <p>Created brand-consistent posters and digital posts balancing clarity and visual energy.</p>
+                    <span class="label">Poster + Digital Collateral</span>
+                </article>
             </div>
         </div>
     </section>
 
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="photography" class="section reveal">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always interested in new opportunities and exciting projects. Feel free to reach out!</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>reyesimon31@gmail.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>(+63) 999 150 8859</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>#0074 Purok 2 Guemasan, Arayat, Pampanga</span>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/reyes-simon-marcus-v-59049536b" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/simonvreyes" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="m.me/simonvreyes" class="social-link"><i class="fab fa-facebook-messenger"></i></a>
-                    </div>
-
+            <div class="section-heading">
+                <h2>Photography Corner</h2>
+                <p>Frames that inspire my color choices, texture play, and storytelling style.</p>
+            </div>
+            <div class="photo-grid">
+                <figure class="scrapbook-card tilt">
+                    <img src="photo-1.jpg" alt="Street photography sample">
+                    <figcaption>Street stories and motion blur.</figcaption>
+                </figure>
+                <figure class="scrapbook-card tilt">
+                    <img src="photo-2.jpg" alt="Portrait photography sample">
+                    <figcaption>Colorful portraits and mood.</figcaption>
+                </figure>
+                <figure class="scrapbook-card tilt">
+                    <img src="photo-3.jpg" alt="Landscape photography sample">
+                    <figcaption>Travel textures and light leaks.</figcaption>
+                </figure>
+                <figure class="scrapbook-card tilt">
+                    <img src="photo-4.jpg" alt="Creative abstract photography sample">
+                    <figcaption>Film-like experiments and grain.</figcaption>
+                </figure>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section id="contact" class="section reveal">
+        <div class="container contact-wrap scrapbook-card pinned">
+            <h2>Let us build something fun and useful.</h2>
+            <p>I am open to UI/UX internships, freelance design projects, and entry-level product design roles.</p>
+
+            <div class="contact-details">
+                <a href="mailto:reyesimon31@gmail.com"><i class="fas fa-envelope"></i> reyesimon31@gmail.com</a>
+                <a href="tel:+639991508859"><i class="fas fa-phone"></i> +63 999 150 8859</a>
+                <a href="https://www.linkedin.com/in/reyes-simon-marcus-v-59049536b" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/simonvreyes" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Simon Marcus V. Reyes. All rights reserved.</p>
+            <p>&copy; 2026 Simon Marcus V. Reyes. Built with love, color, and plenty of sticky notes.</p>
         </div>
     </footer>
 
