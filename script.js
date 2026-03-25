@@ -5,8 +5,31 @@ const brandLink = document.querySelector('.brand');
 const brandMiniVideo = document.querySelector('.brand-mini-video');
 const heroProfileMedia = document.querySelector('.hero-photo');
 const profileVideo = document.querySelector('#profileVideo');
+const openCvModalButton = document.querySelector('#openCvModal');
+const closeCvModalButton = document.querySelector('#closeCvModal');
+const cvModal = document.querySelector('#cvModal');
 const backToTopButton = document.querySelector('.back-to-top');
 const backToTopThreshold = 180;
+
+function openCvModal() {
+    if (!cvModal) {
+        return;
+    }
+
+    cvModal.classList.add('open');
+    cvModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+}
+
+function closeCvModal() {
+    if (!cvModal) {
+        return;
+    }
+
+    cvModal.classList.remove('open');
+    cvModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+}
 
 function ensureProfileVideoAutoplay() {
     if (!profileVideo) {
@@ -135,6 +158,28 @@ if (backToTopButton) {
         });
     });
 }
+
+if (openCvModalButton) {
+    openCvModalButton.addEventListener('click', openCvModal);
+}
+
+if (closeCvModalButton) {
+    closeCvModalButton.addEventListener('click', closeCvModal);
+}
+
+if (cvModal) {
+    cvModal.addEventListener('click', (event) => {
+        if (event.target === cvModal) {
+            closeCvModal();
+        }
+    });
+}
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeCvModal();
+    }
+});
 
 window.addEventListener('scroll', setActiveLink);
 window.addEventListener('scroll', updateBackToTopButton);

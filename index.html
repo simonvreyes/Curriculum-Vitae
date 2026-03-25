@@ -50,7 +50,7 @@
                 </p>
                 <div class="hero-actions">
                     <a href="#designs" class="btn btn-primary">View My Designs</a>
-                    <a href="#contact" class="btn btn-outline">Curriculum Vitae</a>
+                    <button type="button" id="openCvModal" class="btn btn-outline">Curriculum Vitae</button>
                 </div>
             </div>
             <div class="hero-photo scrapbook-card tilt">
@@ -71,7 +71,7 @@
                 <h2>About Me</h2>
                 <br>
                 <p>
-                    I love designing with a vibrant energy,but my true strength is adaptability. 
+                    I love designing with a vibrant energy, but my true strength is adaptability. 
                     I can seamlessly pivot from an expressive, high-energy interface to pure minimalism, 
                     ensuring the final product perfectly aligns with the client's goals.    
                 </p>
@@ -105,17 +105,17 @@
 
             <div class="card-grid">
                 <article class="scrapbook-card project-card">
-                    <img src="design-1.jpg" alt="Mobile app UI case study">
-                    <h3>Campus Companion App</h3>
-                    <p>Designed a student-first mobile flow that simplifies schedule tracking, reminders, and announcements.</p>
-                    <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer" class="btn btn-small">See in Figma</a>
+                    <img src="design-1.jpg" alt="Human Resource Information System (HRIS)">
+                    <h3>HRIS (Human Resource Information System)</h3>
+                    <p>This comprehensive HRIS is an end-to-end platform designed to centralize and streamline core employee data management. The primary UX challenge was transforming complex administrative tasks into an intuitive experience for both HR professionals and general staff. By structuring seamless modules for automated payroll processing, real-time attendance tracking, and efficient leave management, the design significantly reduces administrative friction and delivers a clean, user-friendly workspace.</p>
+                    <a href="https://www.figma.com/design/ohByxMLIa5HWW6mLPXGedd/EGEMCO-HRIS?node-id=9-2&t=2S2CrhjbKoc6WXRY-1" target="_blank" rel="noopener noreferrer" class="btn btn-small">See in Figma</a>
                 </article>
 
                 <article class="scrapbook-card project-card">
-                    <img src="design-2.jpg" alt="Website redesign case study">
-                    <h3>Scholarship Portal Redesign</h3>
-                    <p>Reworked IA and onboarding steps to reduce confusion and improve first-time completion rates.</p>
-                    <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer" class="btn btn-small">See in Figma</a>
+                    <img src="design-2.jpg" alt="OSIMAP (Optimized Spatial Information Map for Accident Prevention)">
+                    <h3>OSIMAP (Optimized Spatial Information Map for Accident Prevention)</h3>
+                    <p>OSIMAP is a cross-platform (Web & Android) application designed to enhance road safety in San Fernando, Pampanga. The core UX challenge was translating dense, complex spatial data into an intuitive, low-cognitive-load interface for drivers. By utilizing high-contrast visual hierarchies, dynamic heatmap visualizations, and real-time contextual alerts, the design empowers users with glanceable, immediate awareness of high-risk accident hotspots without causing dangerous distractions.</p>
+                    <a href="https://www.figma.com/design/o8xP2J9cdqiXE428MFoNbb/OSIMAP---Web?node-id=0-1&p=f&t=MlL5ty2ujmFtzxx6-0" target="_blank" rel="noopener noreferrer" class="btn btn-small">See in Figma</a>
                 </article>
 
                 <article class="scrapbook-card project-card">
@@ -224,6 +224,18 @@
             <p>&copy; 2026 Simon Marcus V. Reyes. Built with love, color, and plenty of sticky notes.</p>
         </div>
     </footer>
+
+    <div id="cvModal" class="cv-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle">
+        <div class="cv-modal-panel">
+            <div class="cv-modal-header">
+                <h2 id="cvModalTitle">Curriculum Vitae</h2>
+                <button type="button" id="closeCvModal" class="cv-modal-close" aria-label="Close CV modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <iframe class="cv-modal-frame" src="cv.pdf" title="Simon Marcus Venasquez Reyes Curriculum Vitae"></iframe>
+        </div>
+    </div>
 
     <button class="back-to-top" aria-label="Back to top">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
