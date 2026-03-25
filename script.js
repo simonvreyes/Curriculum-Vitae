@@ -8,8 +8,40 @@ const profileVideo = document.querySelector('#profileVideo');
 const openCvModalButton = document.querySelector('#openCvModal');
 const closeCvModalButton = document.querySelector('#closeCvModal');
 const cvModal = document.querySelector('#cvModal');
+const partnerMediaCards = document.querySelectorAll('.partner-media');
+const partnerLogoImages = document.querySelectorAll('.partner-logo-image');
+const partnerGalleryModal = document.querySelector('#partnerGalleryModal');
+const closePartnerGalleryModalButton = document.querySelector('#closePartnerGalleryModal');
+const partnerGalleryTitle = document.querySelector('#partnerGalleryTitle');
+const partnerGalleryGrid = document.querySelector('#partnerGalleryGrid');
 const backToTopButton = document.querySelector('.back-to-top');
 const backToTopThreshold = 180;
+
+let currentPartnerGalleryImages = [];
+
+function syncBodyModalState() {
+    const hasOpenModal = document.querySelector('.cv-modal.open');
+    document.body.classList.toggle('modal-open', Boolean(hasOpenModal));
+}
+
+function getPlaceholderImageDataUrl(labelText) {
+    const safeLabel = String(labelText || 'Gallery Image').replace(/[<>&"']/g, '');
+    const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">` +
+        `<defs>` +
+        `<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">` +
+        `<stop offset="0%" stop-color="#f1f1f1" />` +
+        `<stop offset="100%" stop-color="#dcdcdc" />` +
+        `</linearGradient>` +
+        `</defs>` +
+        `<rect width="1400" height="900" fill="url(#g)" />` +
+        `<rect x="32" y="32" width="1336" height="836" fill="none" stroke="#111111" stroke-width="8" />` +
+        `<text x="700" y="430" text-anchor="middle" fill="#111111" font-size="54" font-family="Arial, sans-serif" font-weight="700">${safeLabel}</text>` +
+        `<text x="700" y="500" text-anchor="middle" fill="#3c3c3c" font-size="34" font-family="Arial, sans-serif">Replace with your brand image file</text>` +
+        `</svg>`;
+
+    return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
 
 function openCvModal() {
     if (!cvModal) {
@@ -18,7 +50,7 @@ function openCvModal() {
 
     cvModal.classList.add('open');
     cvModal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
+    syncBodyModalState();
 }
 
 function closeCvModal() {
@@ -28,7 +60,56 @@ function closeCvModal() {
 
     cvModal.classList.remove('open');
     cvModal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
+    syncBodyModalState();
+}
+
+function renderPartnerGalleryGrid() {
+    if (!partnerGalleryGrid) {
+        return;
+    }
+
+    partnerGalleryGrid.innerHTML = '';
+
+    currentPartnerGalleryImages.forEach((imageData, index) => {
+        const galleryItem = document.createElement('figure');
+        galleryItem.className = 'partner-gallery-item';
+        galleryItem.setAttribute('role', 'listitem');
+
+        const galleryImage = document.createElement('img');
+        galleryImage.src = imageData.src;
+        galleryImage.alt = imageData.alt;
+        galleryImage.loading = 'lazy';
+        galleryImage.addEventListener('error', () => {
+            galleryImage.src = getPlaceholderImageDataUrl(imageData.alt);
+        });
+
+        galleryItem.appendChild(galleryImage);
+        partnerGalleryGrid.appendChild(galleryItem);
+    });
+}
+
+function openPartnerGallery(title, images) {
+    if (!partnerGalleryModal || !partnerGalleryTitle || !partnerGalleryGrid || images.length === 0) {
+        return;
+    }
+
+    currentPartnerGalleryImages = images;
+    partnerGalleryTitle.textContent = `${title} Gallery`;
+    renderPartnerGalleryGrid();
+
+    partnerGalleryModal.classList.add('open');
+    partnerGalleryModal.setAttribute('aria-hidden', 'false');
+    syncBodyModalState();
+}
+
+function closePartnerGallery() {
+    if (!partnerGalleryModal) {
+        return;
+    }
+
+    partnerGalleryModal.classList.remove('open');
+    partnerGalleryModal.setAttribute('aria-hidden', 'true');
+    syncBodyModalState();
 }
 
 function ensureProfileVideoAutoplay() {
@@ -175,9 +256,54 @@ if (cvModal) {
     });
 }
 
+if (partnerMediaCards.length > 0) {
+    partnerMediaCards.forEach((card) => {
+        const button = card.querySelector('.partner-view-btn');
+        if (!button) {
+            return;
+        }
+
+        button.addEventListener('click', () => {
+            const title = card.dataset.galleryTitle || 'Brand';
+            const fileNames = (card.dataset.galleryImages || '')
+                .split(',')
+                .map((fileName) => fileName.trim())
+                .filter(Boolean);
+
+            const images = fileNames.map((fileName, index) => ({
+                src: fileName,
+                alt: `${title} image ${index + 1}`
+            }));
+
+            openPartnerGallery(title, images);
+        });
+    });
+}
+
+if (partnerLogoImages.length > 0) {
+    partnerLogoImages.forEach((logoImage) => {
+        logoImage.addEventListener('error', () => {
+            logoImage.src = getPlaceholderImageDataUrl(logoImage.alt || 'Brand logo');
+        });
+    });
+}
+
+if (closePartnerGalleryModalButton) {
+    closePartnerGalleryModalButton.addEventListener('click', closePartnerGallery);
+}
+
+if (partnerGalleryModal) {
+    partnerGalleryModal.addEventListener('click', (event) => {
+        if (event.target === partnerGalleryModal) {
+            closePartnerGallery();
+        }
+    });
+}
+
 document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         closeCvModal();
+        closePartnerGallery();
     }
 });
 
